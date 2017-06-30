@@ -1,7 +1,7 @@
 # Plugin 配置说明(Script Runner)
 
 ## 概念
-- user storage(ustg 或用户自定义存储): 存储机构或用户（参数private为true时）的自定义数据，详见ustg API
+- user storage(ustg 或用户自定义存储): 存储组织机构或用户（参数private为true时）的自定义数据，详见ustg API
 - local storage(localstg 或服务器存储): 存储某一台服务器的自定义数据并下发到对应的agent，详见localstg API
 
 ## 数据结构
