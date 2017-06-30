@@ -1,9 +1,11 @@
-# 概念
+# Plugin 配置说明(Script Runner)
+
+## 概念
 - user storage(ustg 或用户自定义存储): 存储机构或用户（参数private为true时）的自定义数据，详见ustg API
 - local storage(localstg 或服务器存储): 存储某一台服务器的自定义数据并下发到对应的agent，详见localstg API
 
-# 数据结构
-###script_runner
+## 数据结构
+#### script_runner
 ```
 {
     "path": <string>, 
@@ -16,7 +18,7 @@
 - duration_second: 执行周期，单位秒
 - timeout_second: 超市时间，单位秒
 
-###ustg_marker
+#### ustg_marker
 ```
 "ustg:ustg_category/ustg_name"
 ```
@@ -24,7 +26,7 @@
 - ustg_category: 用户存储所属分类
 - ustg_name: 用户存储唯一标识名称
 
-# 单独服务器的Plugin配置
+## 单独服务器的Plugin配置
 - 新建或更新：调用localstg upsert API 为服务器设置本地存储：
     - host: 服务器名
     - name: "plugin"
@@ -36,7 +38,7 @@
     - host: 服务器名
     - name: "plugin"
     
-# 服务器节点的Plugin配置（并关联服务器）
+## 服务器节点的Plugin配置（并关联服务器）
 - 新建或更新plugin配置：调用ustg upsert API 配置用户存储：
     - name: 节点ID（node_id）
     - category: 自定义分类
@@ -60,5 +62,5 @@
     - host: 服务器名
     - name: "plugin_"+节点ID
 
-# 其他细节
+## 其他细节
 - 存储数据均为规定数据结构的数组，并且序列化为对应的json格式字符串
