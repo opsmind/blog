@@ -6,6 +6,7 @@
 
 ## 数据结构
 #### script_runner
+
 ```
 {
     "path": <string>, 
@@ -13,15 +14,18 @@
     "timeout_second":<int64>
 }
 ```
+
 参数说明：
 - path: Linux glob 路径模式匹配 例如"/tmp/dogtest/metric/*"
 - duration_second: 执行周期，单位秒
 - timeout_second: 超市时间，单位秒
 
 #### ustg_marker
+
 ```
 "ustg:ustg_category/ustg_name"
 ```
+
 参数说明：
 - ustg_category: 用户存储所属分类
 - ustg_name: 用户存储唯一标识名称
@@ -102,7 +106,9 @@ Content-Type: application/json
 }
 
 ```
+
 - node1下有三台服务器： host1 host2 host3， 让该节点下的三台机器都执行配置
+
 ```
 POST /v1/localstg/upsert
 Content-Type: application/json
@@ -132,9 +138,11 @@ Content-Type: application/json
 }
 
 ```
+
 **案例三：更改节点配置**
 - 前提： 案例二
 - 更改配置，增加30秒运行一次节点下服务器的/a/b/e文件夹下的脚本
+
 ```
 POST /v1/ustg/category/plugin/name/node1/upsert
 Content-Type: application/json
@@ -145,11 +153,13 @@ Content-Type: application/json
 }
 
 ```
+
 - 更改之后，节点node1下三台服务器的plugin配置将自动更新
 
 **案例四：为节点增加机器**
 - 前提： 案例二
 - 节点增加新机器host4,让host4执行该节点的plugin配置
+
 ```
 POST /v1/localstg/upsert
 Content-Type: application/json
@@ -160,11 +170,13 @@ Content-Type: application/json
   "desc": "any thing can describe"
 }
 ```
+
 - 更改之后，节点node1下三台服务器的plugin配置将自动更新
 
 **案例四：删除节点机器**
 - 前提： 案例二
 - 让host1删除该节点node1的plugin配置
+
 ```
 POST /v1/localstg/delete
 Content-Type: application/json
@@ -173,4 +185,5 @@ Content-Type: application/json
   "name": "plugin_node1"
 }
 ```
+
 <br><br>
