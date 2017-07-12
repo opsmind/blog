@@ -173,7 +173,7 @@ Content-Type: application/json
 
 - 更改之后，节点node1下三台服务器的plugin配置将自动更新
 
-**案例四：删除节点机器**
+**案例五：删除节点机器**
 - 前提： 案例二
 - 让host1删除该节点node1的plugin配置
 
