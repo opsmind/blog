@@ -91,7 +91,7 @@ Content-Type: application/json
 {
     "id" : <adjust_id:string>,               # 该告警微调的唯一标识 ID
     "name" : <adjust_name:string>,           # 该告警微调的名称
-	"desc" : <description:string>,
+    "desc" : <description:string>,
     "policy_id" : <policy_id:string>,        # 该告警微调所属的策略 ID
     "threshold" : <threshold:float64>,       # 该告警微调的触发阈值
     "creator" : <creator:string>,            # 该告警微调的创建者用户 ID
