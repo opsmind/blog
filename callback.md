@@ -31,7 +31,6 @@ Content-Type: application/json
 ```
 
 
-
 其中 `json_body` 的具体格式及说明如下：
 
 ```
@@ -66,7 +65,6 @@ Content-Type: application/json
 ```
 
 
-
 其中 `<policy:struct>` 为触发该告警的策略信息，内容为：
 
 ```
@@ -86,8 +84,8 @@ Content-Type: application/json
 ```
 
 
-
 其中 `<adjust:struct>` 为触发该告警的微调信息，内容为：
+
 
 ```
 {
@@ -103,4 +101,5 @@ Content-Type: application/json
     "for" : <for:int>,                       # 触发该告警微调的持续时长
     "level" : <alert_level:string>           # 该告警微调触发的告警级别
 }
-```%
+```
+
