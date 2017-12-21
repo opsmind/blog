@@ -12,13 +12,13 @@
 
 目前 OpsMind 支持的回调协议为：
 
-* `om.native.v2`
+* `om.native`
 
-其中，`om.native.v2`为 OpsMind 官方提供的告警信息格式。
+其中，`om.native`为 OpsMind 官方提供的告警信息格式。
 
 
 
-#### om.native.v2
+#### om.native
 
 HTTP 请求格式：
 
