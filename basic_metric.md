@@ -83,16 +83,17 @@ dog_service_conn_count | gauge | host, sfrom, role, prot, status, sto | 服务 $
   + 目前由于 agent 能力所限，当 role="s" 时，sfrom 一定为 "\_\_nil\_\_"，表示未知来源
   + prot 表示连接的协议，当前可选项为: "tcp"
   + prot="tcp" 时，status 可选项为：
-    - "established"
-    - "syn_sent"
-    - "syn_recv"
-    - "fin_wait1"
-    - "fin_wait2"
-    - "time_wait"
-    - "close"
-    - "close_wait"
-    - "last_ack"
-    - "listen"
-    - "closing"
+    + "established"
+    + "syn_sent"
+    + "syn_recv"
+    + "fin_wait1"
+    + "fin_wait2"
+    + "time_wait"
+    + "close"
+    + "close_wait"
+    + "last_ack"
+    + "listen"
+    + "closing"
 4. dog_service_net_fd 中的 prot 与 stauts 字段同 dog_service_conn_count 含义一致
+5. 
 
