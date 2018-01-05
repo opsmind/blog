@@ -72,9 +72,9 @@ dog_service_net_backlog | gauge | host, service, prot | 正在等待服务处理
 
 1. 服务级别的资源指标一律会将该服务下的所有子进程纳入统计
 2. 服务的实例数量并非该服务的进程数量，实例与实例之间无进程父子关系
-3. 关于 dog_service_net_conn 的详细解释：
-3.1 role 表示当前服务在连接中所处的角色，"c" 表示客户端，"s" 表示服务端
-3.2 目前由于 agent 能力所限，当 role="s" 时，sfrom 一定为 "__nil__"，表示未知来源
-3.3 prot 表示连接的协议，当前可选项为: "tcp"
-3.4 prot="tcp" 时，status 可选项为："established"/"syn_sent"/"syn_recv"/"fin_wait1"/"fin_wait2"/"time_wait"/"close"/"close_wait"/"last_ack"/"listen"/"closing"
+3. 关于 dog_service_net_conn 的解释：
+  + role 表示当前服务在连接中所处的角色，"c" 表示客户端，"s" 表示服务端
+  + 目前由于 agent 能力所限，当 role="s" 时，sfrom 一定为 "\_\_nil\_\_"，表示未知来源
+  + prot 表示连接的协议，当前可选项为: "tcp"
+  + prot="tcp" 时，status 可选项为："established"/"syn_sent"/"syn_recv"/"fin_wait1"/"fin_wait2"/"time_wait"/"close"/"close_wait"/"last_ack"/"listen"/"closing"
 
