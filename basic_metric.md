@@ -65,16 +65,34 @@ dog_service_disk_io | gauge | host, service, type, mode | 服务平均每秒内�
 dog_service_ctx_switch | gauge | host, service, type | 服务平均每秒内引发操作系统进行 $type(voluntary/involuntary) 模式的上下文切换次数 | 1
 dog_service_instances | gauge | host, service | 服务正在运行的实例数量（非进程数量） | 1
 dog_service_threads | gauge | host, service | 服务正在运行的线程数量 | 1
-dog_service_net_conn | gauge | host, sfrom, role, prot, status, sto | 服务 $sfrom 与服务 $sto 之间建立的处于 $status 状态的连接数量,详见说明一节 | 1
+dog_service_net_fd | gauge | host, service, prot, status | 服务 $service 占用处于状态 $status 的网络连接句柄数量，详见说明一节 | 1
 dog_service_net_backlog | gauge | host, service, prot | 正在等待服务处理的网络连接数 | 1
+
+#### B.2 业务
+
+metric_name | type | tags | desc | unit
+------------ | ------ | ----| ----- | ---
+dog_service_conn_count | gauge | host, sfrom, role, prot, status, sto | 服务 $sfrom 与服务 $sto 之间建立的处于 $status 状态的连接数量，详见说明一节 | 1
 
 **说明**
 
 1. 服务级别的资源指标一律会将该服务下的所有子进程纳入统计
 2. 服务的实例数量并非该服务的进程数量，实例与实例之间无进程父子关系
-3. 关于 dog_service_net_conn 的解释：
+3. 关于 dog_service_conn_count 的解释：
   + role 表示当前服务在连接中所处的角色，"c" 表示客户端，"s" 表示服务端
   + 目前由于 agent 能力所限，当 role="s" 时，sfrom 一定为 "\_\_nil\_\_"，表示未知来源
   + prot 表示连接的协议，当前可选项为: "tcp"
-  + prot="tcp" 时，status 可选项为："established"/"syn_sent"/"syn_recv"/"fin_wait1"/"fin_wait2"/"time_wait"/"close"/"close_wait"/"last_ack"/"listen"/"closing"
+  + prot="tcp" 时，status 可选项为：
+    - "established"
+    - "syn_sent"
+    - "syn_recv"
+    - "fin_wait1"
+    - "fin_wait2"
+    - "time_wait"
+    - "close"
+    - "close_wait"
+    - "last_ack"
+    - "listen"
+    - "closing"
+4. dog_service_net_fd 中的 prot 与 stauts 字段同 dog_service_conn_count 含义一致
 
