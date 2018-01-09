@@ -22,6 +22,7 @@ metric_name | type | tags | desc | unit
 ------------ | ------ | ----| ----- | ---- 
 dog_netdev_bytes | counter | dev, host, dir | 网卡设备在 $dir(rx/tx) 方向上累计传输的流量大小 | byte 
 dog_netdev_packets | counter | dev, host, type, dir | 网卡设备在 $dir(rx/tx) 方向上累计捕获到 $type(drop/error/success) 类型的包数量 | 1 
+dog_netdev_speed | gauge | dev, host | 网卡设备的上限带宽速率 | Mbps
 
 #### Disk 类
 
