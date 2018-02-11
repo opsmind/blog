@@ -154,11 +154,11 @@ agent 可以通过 `groks` 字段的配置实现日志分析，并自动将分�
 
 ### labels
 
-指定一系列 key/value 对，key 和 value 都为字符串。key 为监控指标中的label name，value 为监控指标中的 label value，value 支持 [golang template](https://golang.org/pkg/text/template/) 。如：`"code": "{.code}"` 或 `"static": "abc"`。
+指定一系列 key/value 对，key 和 value 都为字符串。key 为监控指标中的label name，value 为监控指标中的 label value，value 支持 [golang template](https://golang.org/pkg/text/template/) 。如：`"code": "\{\{.code\}\}"` 或 `"static": "abc"`。
 
 ### value
 
-以字符串方式指定监控指标的值，支持 [golang template](https://golang.org/pkg/text/template/)。`value` 字符串必须可以转换为 float 数字。如：`"value": "{.dur}"` 或 `"value": "42.0"`。
+以字符串方式指定监控指标的值，支持 [golang template](https://golang.org/pkg/text/template/)。`value` 字符串必须可以转换为 float 数字。如：`"value": "\{\{.dur\}\}"` 或 `"value": "42.0"`。
 
 ### aggr
 
@@ -274,8 +274,8 @@ agent 可以通过 `groks` 字段的配置实现日志分析，并自动将分�
                                 "name": "test_metric",
                                 "match": "%{IP:ip} - - \\[%{HTTPDATE}\\] %{QUOTEDSTRING} %{INT:code} %{INT:dur} %{QUOTEDSTRING} %{QUOTEDSTRING}",
                                 "labels": {
-                                    "ip": "{{.ip}}",
-                                    "code": "{{.code}}"
+                                    "ip": "\{\{.ip\}\}",
+                                    "code": "\{\{.code\}\}"
                                 },
                                 "value": "1",
                                 "aggr":"rsum"
@@ -284,10 +284,10 @@ agent 可以通过 `groks` 字段的配置实现日志分析，并自动将分�
                                 "name": "test_metric2",
                                 "match": "%{IP:ip} - - \\[%{HTTPDATE}\\] %{QUOTEDSTRING} %{INT:code} %{INT:dur} %{QUOTEDSTRING} %{QUOTEDSTRING}",
                                 "labels": {
-                                    "ip": "{{.ip}}",
-                                    "dur": "{{.dur}}"
+                                    "ip": "\{\{.ip\}\}",
+                                    "dur": "\{\{.dur\}\}"
                                 },
-                                "value": "{{.code}}",
+                                "value": "\{\{.code\}\}",
                                 "aggr":"sum"
                             }
                         ]
