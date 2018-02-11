@@ -80,16 +80,16 @@ process config 的最上级结构，是一个数组。process config 基于“�
 * `${uid}`：运行进程的用户id。
 * `${docker_image}`：进程所属 docker 的 image 名字。如果进程不在 docker 中运行，这个变量会被替换为空字符串（`""`）。
 * `${env-X}`：进程的环境变量，`X`为环境变量的名字，如 `${env-PATH}` 会被替换为 `/bin/:/usr/local/bin`，如果指定的环境变量不存在，这个变量会被替换为空字符串（`""`）。
-* `${docker_label-X`：进程所在 docker 的 label，`X`为 label 的名字，如 `${docker_label-io.kubernetes.container.name}` 会被替换为 `some_pod`。如果进程不在 docker 中运行，或指定的 label 名字不存在，这个变量会被替换为空字符串（`""`）。这个变量可用于使用 docker 或 k8s 的信息命名或区分进程。
-* `${jvm_stat-X`：进程所在 jvm 中的 stat 信息，`X`为 stat 中的名字（key），如 `${jvm_stat-sun.rt.javaCommand}` 会被替换为 `some_java_command`。如果进程不在 jvm 中运行，或指定的 stat 名字不存在，这个变量会被替换为空字符串（`""`）。这个变量可用于使用 jvm 的信息命名或区分进程。所有 jvm stat 列表可使用 `jinfo <pid>` 获得。
+* `${docker_label-X}`：进程所在 docker 的 label，`X`为 label 的名字，如 `${docker_label-io.kubernetes.container.name}` 会被替换为 `some_pod`。如果进程不在 docker 中运行，或指定的 label 名字不存在，这个变量会被替换为空字符串（`""`）。这个变量可用于使用 docker 或 k8s 的信息命名或区分进程。
+* `${jvm_stat-X}`：进程所在 jvm 中的 stat 信息，`X`为 stat 中的名字（key），如 `${jvm_stat-sun.rt.javaCommand}` 会被替换为 `some_java_command`。如果进程不在 jvm 中运行，或指定的 stat 名字不存在，这个变量会被替换为空字符串（`""`）。这个变量可用于使用 jvm 的信息命名或区分进程。所有 jvm stat 列表可使用 `jinfo <pid>` 获得。
 
-示例：如一个 `search_in` 字符串为 `"exe:${exe},user:${user}"`，则 agent 处理 nginx 时会将该字符串替换为 `"exe:/usr/sbin/nginx /etc/nginx,user:www-data"`，替换后的字符串会被 `regexp` 匹配。
+示例：如一个 `search_in` 字符串为 `"exe:${exe},user:${user}"`，则 agent 处理 nginx 时会将该字符串替换为 `"exe:/usr/sbin/nginx,user:www-data"`，替换后的字符串会被 `regexp` 匹配。
 
 ### regexp
 
 定义一个正则表达式，agent 会使用这个正则表达式去匹配 `search_in` 字符串，匹配的结果会作为该“进程模板”对当前进程的匹配结果，正则表达式中的 Capturing Group 可被 `name` 字段使用。
 
-示例：假设 `name` 字段为 `"$1($2)"`（参加 `name` 字段文档）， 如一个 `regexp` 为 `"exe:.*/(.+)\\,user:(.+)"`，则对于不同 `search_in` 有如下结果的进程命名：
+示例：假设 `name` 字段为 `"$1($2)"`（参见 `name` 字段文档）， 如一个 `regexp` 为 `"exe:.*/(.+)\\,user:(.+)"`，则对于不同 `search_in` 有如下结果的进程命名：
 
 * `"exe:/usr/sbin/nginx /etc/nginx,user:www-data"`：`nginx(www-data)`
 * `"exe:/usr/sbin/nginx /etc/nginx,user:root"`：`nginx(root)`
