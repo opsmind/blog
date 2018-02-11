@@ -285,7 +285,7 @@ agent 可以通过 `groks` 字段的配置实现日志分析，并自动将分�
                                 "match": "%{IP:ip} - - \\[%{HTTPDATE}\\] %{QUOTEDSTRING} %{INT:code} %{INT:dur} %{QUOTEDSTRING} %{QUOTEDSTRING}",
                                 "labels": {
                                     "ip": "{{.ip}}",
-                                    "dur": "{{.dur\}"
+                                    "dur": "{{.dur}}"
                                 },
                                 "value": "{{.code}}",
                                 "aggr":"sum"
