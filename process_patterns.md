@@ -91,8 +91,8 @@ process config 的最上级结构，是一个数组。process config 基于“�
 
 示例：假设 `name` 字段为 `"$1($2)"`（参见 `name` 字段文档）， 如一个 `regexp` 为 `"exe:.*/(.+)\\,user:(.+)"`，则对于不同 `search_in` 有如下结果的进程命名：
 
-* `"exe:/usr/sbin/nginx /etc/nginx,user:www-data"`：`nginx(www-data)`
-* `"exe:/usr/sbin/nginx /etc/nginx,user:root"`：`nginx(root)`
+* `"exe:/usr/sbin/nginx,user:www-data"`：`nginx(www-data)`
+* `"exe:/usr/sbin/nginx,user:root"`：`nginx(root)`
 
 ### process_config
 
