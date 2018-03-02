@@ -158,7 +158,7 @@ agent 可以通过 `groks` 字段的配置实现日志分析，并自动将分�
 
 ### s_data
 
-s_data 的使用方法与 labels 一样（包括 value 对 golang template 的支持），通过指定一系列 key/value 对，将原始日志转化为所配置的 key/value 信息进行上传。
+s_data 的使用方法与 labels 一样（包括 value 对 golang template 的支持），通过指定一系列 key/value 对，将原始日志转化为所配置的 key/value 信息进行结构化地上传。
 
 ### value
 
