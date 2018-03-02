@@ -34,6 +34,10 @@ OpsMind™ 的 agent 在抓取进程信息时会根据一组配置来决定进�
                   <string>: <string>,
                   ...
                 },
+                "s_data": {
+                  <string>: <string>,
+                  ...
+                },
                 "value": <string>,
                 "aggr": <string>
               },
@@ -140,7 +144,7 @@ agent 带有日志收集和分析功能，这些功能通过 `slog_file_patterns
 
 ### groks
 
-agent 可以通过 `groks` 字段的配置实现日志分析，并自动将分析结果以监控指标方式存储。`groks` 字段为一个数组，数组中可定义多种分析方式，不同分析方式间为并列关系。
+agent 可以通过 `groks` 字段的配置实现日志分析，并自动将分析结果以监控指标方式存储（参加 `labels` 字段）或将日志分析结果回传(参加 `s_data` 字段)。`groks` 字段为一个数组，数组中可定义多种分析方式，不同分析方式间为并列关系。
 
 ### name
 
@@ -154,11 +158,11 @@ agent 可以通过 `groks` 字段的配置实现日志分析，并自动将分�
 
 ### labels
 
-指定一系列 key/value 对，key 和 value 都为字符串。key 为监控指标中的label name，value 为监控指标中的 label value，value 支持 [golang template](https://golang.org/pkg/text/template/) 。如：`"code": "{{.code}}"` 或 `"static": "abc"`。
+指定一系列 key/value 对，key 和 value 都为字符串。key 为监控指标中的label name，value 为监控指标中的 label value。value 支持 [golang template](https://golang.org/pkg/text/template/) 。如：`"code": "{{.code}}"` 或 `"static": "abc"`。
 
 ### s_data
 
-s_data 的使用方法与 labels 一样（包括 value 对 golang template 的支持），通过指定一系列 key/value 对，将原始日志转化为所配置的 key/value 信息进行结构化地上传。
+指定一系列 key/value 对，key 和 value 都为字符串。key 和 value 会在分析完成后回传，并通过 webhook 机制送达到指定位置。value 支持 [golang template](https://golang.org/pkg/text/template/) 。如：`"code": "{{.code}}"` 或 `"static": "abc"`。
 
 ### value
 
