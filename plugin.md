@@ -18,7 +18,7 @@
 参数说明：
 - path: Linux glob 路径模式匹配 例如"/tmp/dogtest/metric/*"
 - duration_second: 执行周期，单位秒
-- timeout_second: 超市时间，单位秒
+- timeout_second: 超时时间，单位秒
 
 #### ustg_marker
 
